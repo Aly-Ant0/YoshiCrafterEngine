@@ -34,7 +34,7 @@ class FlxControls {
         
     }
     public static function anyPressed(keys:Array<FlxKey>) {
-		#if MOBILE_UI
+		#if android
 			// android stuff
 			var input = getAndroidInput(Pressed);
 			var map = FlxKey.toStringMap;
@@ -66,7 +66,7 @@ class FlxControls {
         
     }
     public static function anyJustPressed(keys:Array<FlxKey>) {
-		#if MOBILE_UI
+		#if android
 			// android stuff
 			var input = getAndroidInput(JustPressed);
 			var map = FlxKey.toStringMap;
@@ -98,7 +98,7 @@ class FlxControls {
         
     }
     public static function anyJustReleased(keys:Array<FlxKey>) {
-		#if MOBILE_UI
+		#if android
 			// android stuff
 			var input = getAndroidInput(JustReleased);
 			var map = FlxKey.toStringMap;
@@ -114,7 +114,7 @@ class FlxControls {
     }
 
 	public static function firstJustPressed() {
-		#if MOBILE_UI
+		#if android
 			var currentState = FlxG.state;
 			var map = FlxKey.toStringMap;
 			for(c in currentState.members) {
@@ -132,7 +132,7 @@ class FlxControls {
 	}
 
 	public static function firstPressed() {
-		#if MOBILE_UI
+		#if android
 			var currentState = FlxG.state;
 			var map = FlxKey.toStringMap;
 			for(c in currentState.members) {
@@ -150,7 +150,7 @@ class FlxControls {
 	}
 
 	public static function firstJustReleased() {
-		#if MOBILE_UI
+		#if android
 			var currentState = FlxG.state;
 			var map = FlxKey.toStringMap;
 			for(c in currentState.members) {
@@ -195,7 +195,7 @@ class FlxControls {
 		}
 	}
     public static function getAndroidInput(type:FlxControlType):Dynamic {
-		#if MOBILE_UI
+		#if android
 			var result = {};
 			var currentState = FlxG.state;
 			lolAndroidShit(currentState, result, type);
