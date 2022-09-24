@@ -87,9 +87,9 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile APK
-        run: haxelib run lime build android -final
+        run: lime build android -release
           
       - uses: actions/upload-artifact@v2
         with:
-          name: Yoshi Engine amdroidi
+          name: Yoshi Engine Android
           path: export/release/android/bin/app/build/outputs/apk/debug
