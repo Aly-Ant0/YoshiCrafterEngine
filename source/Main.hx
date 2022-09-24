@@ -298,7 +298,8 @@ class Main extends Sprite
 
 		addChild(new FnfGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
-		
+		SUtil.check();
+
 		fps = new GameStats(10, 3, 0xFFFFFF);
 
 		logsOverlay = new LogsOverlay();
