@@ -294,7 +294,7 @@ class MainMenuState extends FullyModState {
 
 		changeItem();
 
-		#if MOBILE_UI
+		#if android
 		backButton = new FlxClickableSprite(10, versionShit.y, function() {
 			FlxG.switchState(new TitleState());
 		});
@@ -367,7 +367,7 @@ class MainMenuState extends FullyModState {
 				}
 			}
 				if (FlxG.mouse.pressed && !selectedSomethin
-					#if MOBILE_UI
+					#if android
 					&& !backButton.hovering
 					#end
 					)
