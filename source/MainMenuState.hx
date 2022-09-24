@@ -311,8 +311,12 @@ class MainMenuState extends FullyModState {
 
 		mainMenuScript.executeFunc("postCreate");
 		mainMenuScript.executeFunc("createPost");
-		
+	
 		Medals.unlock("Friday Night Funkin'", "Friday Night Funker");
+
+		#if android
+		addVirtualPad(FULL, A_B);
+		#end
 	}
 
 	public var selectedSomethin:Bool = false;
