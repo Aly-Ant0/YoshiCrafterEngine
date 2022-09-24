@@ -24,43 +24,69 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.2.4
+
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r21e
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@v1.1.5
+        with:
+          haxe-version: 4.2.4
+
       # Runs a set of commands using the runners shell
-      - name: funny dependencies
+      - name: Install Dependencies
         run: |
-          cinst haxe --version 4.2.4 -y
-          RefreshEnv
-          mkdir "%HAXELIB_ROOT%"
-          haxelib setup "%HAXELIB_ROOT%"
-          haxelib install lime 7.9.0
-          haxelib install openfl
-          haxelib install flixel
-          haxelib run lime setup flixel
+          haxelib --quiet install lime 7.9.0
+          haxelib --quiet install openfl 9.1.0
+          haxelib --quiet install flixel
           haxelib --quiet --never run lime setup
-          haxelib run lime setup
-          haxelib install flixel-tools
-          haxelib install flixel-addons
-          haxelib install flixel-ui
-          haxelib install hscript
-          haxelib install hscript
-          haxelib install akifox-asynchttp
-          haxelib install flixel-addons
-          haxelib install newgrounds
-          haxelib install linc_luajit
-          haxelib install hxp
-          haxelib install hxcpp-debug-server
-          haxelib git faxe https://github.com/uhrobots/faxe
-          haxelib git polymod https://github.com/MasterEric/polymod.git
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-          haxelib git flixel-textureatlas-yoshiengine https://github.com/YoshiCrafter29/Flixel-TextureAtlas-YoshiCrafterEngine
-          haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
-      - name: compilation
+          haxelib --quiet install hscript
+          haxelib --quiet install flixel-ui
+          haxelib --quiet install flixel-addons
+          haxelib --quiet install hscript
+          haxelib --quiet install akifox-asynchttp
+          haxelib --quiet install newgrounds
+          haxelib --quiet install hxp
+          haxelib --quiet install hxcpp-debug-server
+          haxelib git faxe https://github.com/uhrobots/faxe --quiet
+          haxelib git polymod https://github.com/MasterEric/polymod.git --quiet
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git --quiet
+          haxelib git discord_rpc https://github.com/Aidan63/linc_disc --quiet
+          haxelib git flixel-textureatlas-yoshiengine https://github.com/YoshiCrafter29/Flixel-TextureAtlas-YoshiCrafterEngine --quiet
+          haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved --quiet
+          haxelib git linc_luajit https://github.com/MAJigsaw77/linc_luajit.git --quiet
+
+      - name: Config Lime stuff
         run: |
-          haxelib run lime build windows -dce no
+          haxelib run lime setup -alias -y
+          haxelib run lime config ANDROID_SDK $ANDROID_HOME
+          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
+          haxelib run lime config JAVA_HOME $JAVA_HOME
+          haxelib run lime config ANDROID_SETUP true
+          haxelib set lime 7.9.0
+          haxelib set openfl 9.1.0
+          haxelib list
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+      - name: Compile APK
+        run: lime build android -final
           
       - uses: actions/upload-artifact@v2
         with:
           name: Yoshi Engine amdroidi
-          path: export/release/windows/bin
+          path: export/release/android/bin/app/build/outputs/apk/debug
