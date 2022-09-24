@@ -79,6 +79,9 @@ class TitleState extends MusicBeatState
 	}
 	override public function create():Void
 	{
+		#if android
+			FlxG.android.preventDefaultKeys = [BACK];
+		#end
 		FlxTransitionableState.skipNextTransIn = true;
 		reloadModsState = true;
 		
@@ -335,7 +338,7 @@ class TitleState extends MusicBeatState
 			#end
 		}
 
-		if (pressedEnter && !transitioning && skippedIntro)
+		if (pressedEnter #if android || FlxG.android.justReleased.BACK #end && !transitioning && skippedIntro)
 		{
 			var skipUpdate = FlxG.keys.pressed.SHIFT;
 			script.executeFunc("onPressEnter", []);
