@@ -315,7 +315,7 @@ class MainMenuState extends FullyModState {
 		Medals.unlock("Friday Night Funkin'", "Friday Night Funker");
 
 		#if android
-		addVirtualPad(LEFT_FULL, A_B);
+		addVirtualPad(LEFT_FULL, A_B_E);
 		#end
 	}
 
