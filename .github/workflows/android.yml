@@ -70,8 +70,9 @@ jobs:
           haxelib git discord_rpc https://github.com/Aidan63/linc_disc --quiet
           haxelib git flixel-textureatlas-yoshiengine https://github.com/YoshiCrafter29/Flixel-TextureAtlas-YoshiCrafterEngine --quiet
           haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved --quiet
-          haxelib git https://github.com/YoshiCrafter29/flixel.git --quiet
+          haxelib git flixel-yc29 https://github.com/YoshiCrafter29/flixel.git --quiet
           haxelib git linc_luajit https://github.com/MAJigsaw77/linc_luajit.git --quiet
+          haxelib list
 
       - name: Config Lime stuff
         run: |
