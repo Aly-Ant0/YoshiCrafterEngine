@@ -218,6 +218,7 @@ class Main extends Sprite
 
 		#if !noHandler
 		ErrorHandler.assignErrorHandler();
+		SUtil.uncaughtErrorHandler();
 		#end
 
 		if (stage != null)
