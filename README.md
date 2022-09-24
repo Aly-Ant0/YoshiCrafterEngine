@@ -70,6 +70,11 @@ This is a modification for the game Friday Night Funkin', a game originally made
 - **[Smokey_5_](https://www.twitter.com/Smokey_5_)** - Adobe Animate Atlas support
 - And all of the contributors.
 
+## Android Port
+- **[Aly-Ant](https://www.twitter.com/AlyAntlol)** - Main Coder
+- **[M.A Jigsaw](https://www.idk)** - Updated Android Code
+- **[LuckyDog7](https://www.idk)** - Friday Night Funkin' Android Port
+
 ---
 # Mod Installation
 ## How to install a mod (`.ycemod` format)
