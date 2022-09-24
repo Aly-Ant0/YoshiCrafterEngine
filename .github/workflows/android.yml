@@ -67,7 +67,7 @@ jobs:
           haxelib git faxe https://github.com/uhrobots/faxe --quiet
           haxelib git polymod https://github.com/MasterEric/polymod.git --quiet
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git --quiet
-          haxelib git discord_rpc https://github.com/YoshiCrafter29/linc_discord-rpc --quiet
+          haxelib git discord_rpc https://github.com/YoshiCrafter29/linc_discord-rpc
           haxelib git flixel-textureatlas-yoshiengine https://github.com/YoshiCrafter29/Flixel-TextureAtlas-YoshiCrafterEngine --quiet
           haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved --quiet
           haxelib git flixel-yc29 https://github.com/YoshiCrafter29/flixel.git --quiet
