@@ -73,6 +73,30 @@ class MusicBeatState extends FlxUIState implements ILuaScriptable
 	}
 
 	public override function destroy() {
+		#if android
+		if (trackedinputsNOTES != [])
+			controls.removeAControlsInput(trackedinputsNOTES);
+
+		if (trackedinputsUI != [])
+			controls.removeAControlsInput(trackedinputsUI);
+		#end
+
+		super.destroy();
+
+		#if android
+		if (virtualPad != null)
+		{
+			virtualPad = FlxDestroyUtil.destroy(virtualPad);
+			virtualPad = null;
+		}
+
+		if (androidControls != null)
+		{
+			androidControls = FlxDestroyUtil.destroy(androidControls);
+			androidControls = null;
+		}
+		#end
+
 		super.destroy();
 	}
 	
@@ -189,34 +213,6 @@ class MusicBeatState extends FlxUIState implements ILuaScriptable
 		}
 	}
 	#end
-
-	override function destroy()
-	{
-		#if android
-		if (trackedinputsNOTES != [])
-			controls.removeAControlsInput(trackedinputsNOTES);
-
-		if (trackedinputsUI != [])
-			controls.removeAControlsInput(trackedinputsUI);
-		#end
-
-		super.destroy();
-
-		#if android
-		if (virtualPad != null)
-		{
-			virtualPad = FlxDestroyUtil.destroy(virtualPad);
-			virtualPad = null;
-		}
-
-		if (androidControls != null)
-		{
-			androidControls = FlxDestroyUtil.destroy(androidControls);
-			androidControls = null;
-		}
-		#end
-	}
-
 	public function doResizeShit() {return true;}
 
 	override function create()
