@@ -103,7 +103,7 @@
 
 	<haxelib name="linc_luajit" /> <!-- https://github.com/nebulazorua/linc_luajit --> 
 	
-	<haxelib name="discord_rpc_yce" if="desktop"/>
+	<haxelib name="discord_rpc" if="desktop"/>
 	<haxedef name="enable_updates"/>
 	<haxelib name="hxp"/>
 	<haxelib name="flixel-textureatlas-yoshiengine"/>
